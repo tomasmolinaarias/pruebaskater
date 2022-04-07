@@ -1,0 +1,55 @@
+<div class="py-4">
+    <h2> ❌ eliminar Perfil ❌</h2>
+    <hr style="text-align: right; margin-right: 0px;">
+        <h3>⚠</h3>
+        <h6> <small> ingrese su email para eliminar el skater</small></h6>
+        <h6><small>tienes que estar seguro porque despues de eliminar no podras recuperar la cuenta del skater </small> </h6>
+    <hr style="text-align: right; margin-right: 0px;">
+
+
+    <form id="fromEliminarPerfil">
+    <div class="form-group row text-center ">
+        <div class="form-group ">
+        <label>Email <small></small></label>
+        <input class="form-control m-auto mt-2"  type="email" name="email" placeholder="dany@skater.com" />
+        </div>
+       
+    <div class="mb-5">
+        <button class="btn btn-primary mt-5" type="submit">eliminar</button>
+    </div>
+    </form>
+    <script>
+
+    const formulario = document.getElementById('fromEliminarPerfil')
+
+    formulario.addEventListener('submit', async(e) => {
+        e.preventDefault()
+
+        const formData = new FormData(formulario)
+
+        // para validar los datos
+        //const [email, password] = [...datos.values()]
+
+        try {
+
+            const res = await fetch('/api/v1/eliminar', {
+                method: 'delete',
+                body: formData
+            })
+          
+            const data = await res.json()
+            
+            if(!res.ok){
+                return console.log(data.msg)
+            }
+
+    
+            
+            window.location.href = "/"
+
+        }catch(error){
+            console.log(error)
+        }
+
+    })
+</script>
