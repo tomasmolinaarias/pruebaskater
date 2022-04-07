@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node .",
     "dev": "nodemon .",
-    "db:migrar": "node -e \"require('./database').migracion()\""
+    "db:migrar": "node -e \"require('./database').migrar()\""
   },
   "keywords": [],
   "author": "",
