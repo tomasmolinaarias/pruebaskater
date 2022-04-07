@@ -1,14 +1,15 @@
+
 const{Pool}=require('pg')
 const fs = require('fs')
 const path = require('path')
 
 const connectionString = process.env.DATABASE_URL || 'postgres://postgres:root@localhost:5432/skatePark'
+const opt = {connectionString}
 
-const pool = process.env.DATABASE_URL ?
- new Pool({
-    connectionString:connectionString,
-    ssl:{rejectUnauthorized:false}
-}): new Pool({connectionString})
+if (process.env.DATABASE_URL)
+  opt.ssl = {rejectUnauthorized:false}
+
+const pool = new Pool(opt)
 
 //-- leer index
 const getSkatersDB = async() =>{
@@ -149,5 +150,4 @@ module.exports = {
     deleteUserDB,
     updateUserDB,
     migrar,
-
 }
