@@ -24,7 +24,7 @@
         <td>{{this.nombre}}</td>
         <td>{{this.anos_experiencia}}</td>
         <td>{{this.especialidad}}</td>
-        <td id="check"><input id=="myCheck" type="checkbox" name="check" checked data-check="true"/></td>
+        <td id="check"><input type='checkbox' name="test"  checked /></td>
         </tr>
        {{/each}}
     </tbody>
@@ -40,6 +40,11 @@
 </small>
 </div>
 <script>   
+    //profe no se como sacar el booleano
+{{!-- document.getElementsByTagName("test")[0].checked; 
+document.getElementsByTagName("test")[1].checked; 
+console.log(document.getElementsByTagName("test")) --}}
+
 window.document.addEventListener("DOMContentLoaded", async () => {
         if (!localStorage.getItem("token")) {
             window.location.href = "/login";

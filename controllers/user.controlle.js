@@ -1,5 +1,5 @@
 const jwt =require('jsonwebtoken')
-const { getSkatersDB, postUserDB, getUserLoginDB,getAdmiDB, deleteUserDB, updateUserDB, getestadoDB, estadoDB } = require('../database');
+const { getSkatersDB, postUserDB, getUserLoginDB,getAdmiDB, deleteUserDB, updateUserDB, editEstadoDB } = require('../database');
 const {nanoid}= require('nanoid');
 const bcryptjs = require('bcryptjs');
 const path = require('path');
@@ -94,8 +94,7 @@ const getAdMIN = async(req, res) =>{
     } catch (error) {
         (error => res.json({ok: false, msg: error})) 
     }
-    // .then(rows => res.json({ok: true, skaters: rows}))
-    // .catch (error => res.json({ok: false, msg: error})) 
+
     return res.json({ ok: true, respuesta });
 }
 const deleteUser= async (req, res) => {
@@ -167,6 +166,21 @@ const updateUser= async (req, res) => {
     });
   }
 }
+// solo backends me exploto la cabeza XD
+const editEstado = async (req, res) => {
+    const {email,estado} = req.body
+    console.log("🚀 ~ file: user.controlle.js ~ line 172 ~ editEstado ~ req.body", req.body)
+    try {
+        const response = await editEstadoDB(estado, email)
+        console.log("🚀 ~ file: user.controlle.js ~ line 175 ~ editEstado ~ response", response)
+        if (!response.ok) {
+            throw new Error(response.error)
+        }
+        return res.json({ ok:true, msg: response})
+    } catch (error) {
+        return res.status(400).json({ ok:false, msg: error.message})
+    }
+}
 
 module.exports={
     getSkaters,
@@ -175,5 +189,5 @@ module.exports={
     postUsers,
     deleteUser,
     updateUser,
-    
+    editEstado    
 }

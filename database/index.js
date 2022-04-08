@@ -132,6 +132,22 @@ const updateUserDB = async (nombre,anos_experiencia,especialidad,email) =>{
         client.release();
     }
 }
+// estado 
+const editEstadoDB =async(email,estado)=>{
+    const client = await pool.connect();
+    const query = {
+        text: "UPDATE skaters SET estado = $1 WHERE email = $2",
+        values:[estado,email]
+    }
+    try {
+        const respuesta = await client.query(query);
+        return {ok: true, msg:respuesta}
+    } catch (error) {
+        return{ok:false, msg:error.message}
+    }finally{
+        client.release();
+    }
+}
 
 const migrar = () => {
     const data = fs.readFileSync(path.join(__dirname, 'migracion.sql'), {encoding: "utf-8"})
@@ -149,5 +165,6 @@ module.exports = {
     postUserDB,
     deleteUserDB,
     updateUserDB,
+    editEstadoDB,
     migrar,
 }
