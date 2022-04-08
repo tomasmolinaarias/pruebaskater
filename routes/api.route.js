@@ -7,8 +7,8 @@ router.get('/', getSkaters)
 router.post('/login', getLogin)
 router.post('/registrarUser',postUsers)
 router.get('/admi',requireAuth,getAdMIN )
-router.delete('/eliminar',requireAuth,deleteUser)
-router.put('/editarperfil',requireAuth,updateUser)
+router.delete('/eliminar',deleteUser)
+router.put('/editarperfil',updateUser)
 router.put('/estado',editEstado)
 
 module.exports = router;
