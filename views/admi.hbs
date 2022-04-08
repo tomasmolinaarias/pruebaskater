@@ -24,12 +24,14 @@
         <td>{{this.nombre}}</td>
         <td>{{this.anos_experiencia}}</td>
         <td>{{this.especialidad}}</td>
-        <td id="check"><input type="checkbox" name="check" checked data-check="true"/></td>
+        <td id="check"><input id=="myCheck" type="checkbox" name="check" checked data-check="true"/></td>
         </tr>
        {{/each}}
     </tbody>
     </table>
 </div>
+
+
 
 <h3> configuraciónes de las cuentas</h3>
 <div class="mb-1"><small>
@@ -37,8 +39,8 @@
     <a href="/eliminar"> eliminar perfil </a>
 </small>
 </div>
-<script>
- window.document.addEventListener("DOMContentLoaded", async () => {
+<script>   
+window.document.addEventListener("DOMContentLoaded", async () => {
         if (!localStorage.getItem("token")) {
             window.location.href = "/login";
         }
@@ -52,6 +54,7 @@
         if (!data.ok) {
             window.location.href = "/admi";
         }
-       
     });
+
+
 </script>

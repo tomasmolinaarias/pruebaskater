@@ -88,11 +88,9 @@ const getLogin=async (req, res) =>{
     }
 }
 const getAdMIN = async(req, res) =>{
-    const respuesta = await getAdmiDB()
-    
-
     try {
-        (rows => res.json({ok: true, skaters: rows}))
+        const respuesta = await getAdmiDB()
+       return res.json({ok: true, msg:respuesta.skaters})
     } catch (error) {
         (error => res.json({ok: false, msg: error})) 
     }

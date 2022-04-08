@@ -11,7 +11,8 @@ CREATE TABLE skaters (
     estado BOOLEAN NOT NULL DEFAULT FALSE
 );
 
-INSERT INTO skaters(email,nombre,password,anos_experiencia,especialidad,foto,estado) VALUES
+/* INSERT INTO skaters(email,nombre,password,anos_experiencia,especialidad,foto,estado) VALUES
 ('dani@skater.com','dani','123',12,'kickflip','Danny.jpg', TRUE),
 ('evelin@skater.com','evelin','123',12,'kickflip','Evelien.jpg', FALSE),
 ('tonihawk@skater.com','Tony Hawk','123',12,'kickflip','tony.jpg', TRUE);
+ */
