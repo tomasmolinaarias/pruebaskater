@@ -152,11 +152,13 @@ const updateUser= async (req, res) => {
         }
 
         const respuesta = await updateUserDB(nombre,anos_experiencia,especialidad,email)  
-        console.log("🚀 ~ file: user.controlle.js ~ line 120 ~ updateUser ~ respuesta", respuesta)
+    
+       console.log('se actualizo')
         res.json(
             {msg:'se actualizo',
             skater: respuesta
         })
+        
      
   } catch (error) {
     console.log(error);
@@ -166,7 +168,7 @@ const updateUser= async (req, res) => {
     });
   }
 }
-// solo backends me exploto la cabeza XD
+// solo backends me exploto la cabeza XD postman lo mandaba como body - raw
 const editEstado = async (req, res) => {
     const {email,estado} = req.body
     console.log("🚀 ~ file: user.controlle.js ~ line 172 ~ editEstado ~ req.body", req.body)
